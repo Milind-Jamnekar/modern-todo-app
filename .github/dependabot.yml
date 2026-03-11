@@ -1,0 +1,98 @@
+version: 2
+
+updates:
+  # Root / shared packages
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: UTC
+    open-pull-requests-limit: 5
+    groups:
+      turbo:
+        patterns: ['turbo']
+      typescript:
+        patterns: ['typescript', '@types/*']
+    labels:
+      - dependencies
+    commit-message:
+      prefix: 'chore(deps)'
+
+  # NestJS API
+  - package-ecosystem: npm
+    directory: /apps/api
+    schedule:
+      interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: UTC
+    open-pull-requests-limit: 5
+    groups:
+      nestjs:
+        patterns: ['@nestjs/*']
+      typeorm:
+        patterns: ['typeorm', '@nestjs/typeorm']
+      testing:
+        patterns: ['jest', 'ts-jest', '@types/jest', 'supertest', '@types/supertest']
+    labels:
+      - dependencies
+      - api
+    commit-message:
+      prefix: 'chore(deps/api)'
+
+  # Next.js Web
+  - package-ecosystem: npm
+    directory: /apps/web
+    schedule:
+      interval: weekly
+      day: monday
+      time: '09:00'
+      timezone: UTC
+    open-pull-requests-limit: 5
+    groups:
+      next:
+        patterns: ['next', 'react', 'react-dom', '@types/react*']
+      radix:
+        patterns: ['@radix-ui/*']
+      tanstack:
+        patterns: ['@tanstack/*']
+    labels:
+      - dependencies
+      - web
+    commit-message:
+      prefix: 'chore(deps/web)'
+
+  # Docker base images
+  - package-ecosystem: docker
+    directory: /apps/api
+    schedule:
+      interval: monthly
+    labels:
+      - dependencies
+      - docker
+    commit-message:
+      prefix: 'chore(docker/api)'
+
+  - package-ecosystem: docker
+    directory: /apps/web
+    schedule:
+      interval: monthly
+    labels:
+      - dependencies
+      - docker
+    commit-message:
+      prefix: 'chore(docker/web)'
+
+  # GitHub Actions
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    labels:
+      - dependencies
+      - ci
+    commit-message:
+      prefix: 'chore(ci)'

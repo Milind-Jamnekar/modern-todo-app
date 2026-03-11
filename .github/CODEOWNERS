@@ -1,0 +1,14 @@
+# Global owners
+* @your-org/maintainers
+
+# API
+/apps/api/ @your-org/backend
+
+# Web
+/apps/web/ @your-org/frontend
+
+# CI/CD
+/.github/ @your-org/devops
+
+# Shared packages
+/packages/ @your-org/maintainers
