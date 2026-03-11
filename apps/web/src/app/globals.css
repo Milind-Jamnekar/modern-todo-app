@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light — clean zinc base */
+    --background: 0 0% 99%;
+    --foreground: 224 24% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 24% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 24% 8%;
+
+    --primary: 224 24% 8%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 220 14% 94%;
+    --secondary-foreground: 224 24% 12%;
+
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 10% 46%;
+
+    --accent: 220 14% 91%;
+    --accent-foreground: 224 24% 8%;
+
+    --destructive: 0 84% 58%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 14% 89%;
+    --input: 220 14% 89%;
+    --ring: 224 24% 8%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark — layered navy-slate, each surface slightly lighter */
+    --background: 224 24% 5%;       /* #0A0C12  page bg  */
+    --foreground: 220 18% 92%;      /* #E6EAF2  primary text */
+
+    --card: 224 22% 8%;             /* #111520  card surface */
+    --card-foreground: 220 18% 92%;
+
+    --popover: 224 20% 10%;         /* #141820  dropdowns / dialogs */
+    --popover-foreground: 220 18% 92%;
+
+    --primary: 220 16% 93%;         /* near-white — buttons stay crisp */
+    --primary-foreground: 224 24% 6%;
+
+    --secondary: 224 18% 13%;       /* #181D27  secondary button bg */
+    --secondary-foreground: 220 14% 82%;
+
+    --muted: 224 18% 11%;           /* #131720 */
+    --muted-foreground: 220 10% 52%; /* readable mid-gray */
+
+    --accent: 224 18% 14%;          /* #1A2030  hover state */
+    --accent-foreground: 220 18% 92%;
+
+    --destructive: 0 78% 58%;       /* bright enough red */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 224 18% 16%;          /* #1E2535  visible but subtle */
+    --input: 224 18% 12%;           /* #15192A  input bg */
+    --ring: 216 70% 60%;            /* blue ring on focus */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
