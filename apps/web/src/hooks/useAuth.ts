@@ -35,9 +35,9 @@ export function useLogin() {
       toast.success(`Welcome back, ${data.user.name}!`);
       router.push('/todos');
     },
-    onError: (error: any) => {
+    onError: (error: unknown) => {
       const message =
-        error?.response?.data?.message || 'Login failed. Please try again.';
+        (error as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Login failed. Please try again.';
       toast.error(message);
     },
   });
@@ -54,9 +54,9 @@ export function useRegister() {
       toast.success(`Welcome, ${data.user.name}!`);
       router.push('/todos');
     },
-    onError: (error: any) => {
+    onError: (error: unknown) => {
       const message =
-        error?.response?.data?.message || 'Registration failed. Please try again.';
+        (error as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Registration failed. Please try again.';
       toast.error(message);
     },
   });

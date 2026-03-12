@@ -47,8 +47,8 @@ export function useCreateTodo() {
       queryClient.invalidateQueries({ queryKey: STATS_QUERY_KEY });
       toast.success('Todo created!');
     },
-    onError: (error: any) => {
-      const message = error?.response?.data?.message || 'Failed to create todo';
+    onError: (error: unknown) => {
+      const message = (error as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Failed to create todo';
       toast.error(message);
     },
   });
@@ -65,8 +65,8 @@ export function useUpdateTodo() {
       queryClient.invalidateQueries({ queryKey: STATS_QUERY_KEY });
       toast.success('Todo updated!');
     },
-    onError: (error: any) => {
-      const message = error?.response?.data?.message || 'Failed to update todo';
+    onError: (error: unknown) => {
+      const message = (error as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Failed to update todo';
       toast.error(message);
     },
   });
@@ -82,8 +82,8 @@ export function useDeleteTodo() {
       queryClient.invalidateQueries({ queryKey: STATS_QUERY_KEY });
       toast.success('Todo deleted!');
     },
-    onError: (error: any) => {
-      const message = error?.response?.data?.message || 'Failed to delete todo';
+    onError: (error: unknown) => {
+      const message = (error as { response?: { data?: { message?: string } } })?.response?.data?.message || 'Failed to delete todo';
       toast.error(message);
     },
   });

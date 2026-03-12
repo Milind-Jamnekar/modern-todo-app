@@ -1,5 +1,5 @@
 import { INestApplication } from '@nestjs/common';
-import request = require('supertest');
+import *  as request from 'supertest';
 import { createTestApp } from './setup';
 
 describe('Auth (e2e)', () => {

@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  UnauthorizedException,
-  ForbiddenException,
-} from '@nestjs/common';
+import { Injectable, ForbiddenException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { UsersService } from '../users/users.service';
@@ -88,7 +84,7 @@ export class AuthService {
   }
 
   private sanitizeUser(user: User) {
-    const { password, refreshToken, ...rest } = user as any;
+    const { password: _password, refreshToken: _refreshToken, ...rest } = user as any;
     return rest;
   }
 

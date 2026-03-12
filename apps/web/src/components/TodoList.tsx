@@ -1,6 +1,6 @@
 'use client';
 
-import { ClipboardList, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
+import { ClipboardList, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent } from '@/components/ui/card';
