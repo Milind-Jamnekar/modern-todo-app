@@ -214,18 +214,8 @@ importers:
         specifier: ^0.577.0
         version: 0.577.0(react@19.2.4)
       next:
-<<<<<<< HEAD
-<<<<<<< HEAD
         specifier: ^16.1.6
         version: 16.1.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-=======
-        specifier: ^14.2.5
-        version: 14.2.35(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
->>>>>>> ed034fc (Implement feature X to enhance user experience and fix bug Y in module Z)
-=======
-        specifier: ^16.1.6
-        version: 16.1.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
->>>>>>> 567fd74 (Implement feature X to enhance user experience and fix bug Y in module Z)
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -264,15 +254,7 @@ importers:
         specifier: ^19.2.14
         version: 19.2.14
       '@types/react-dom':
-<<<<<<< HEAD
-<<<<<<< HEAD
         specifier: ^19.2.3
-=======
-        specifier: ^19.0.0
->>>>>>> ed034fc (Implement feature X to enhance user experience and fix bug Y in module Z)
-=======
-        specifier: ^19.2.3
->>>>>>> 567fd74 (Implement feature X to enhance user experience and fix bug Y in module Z)
         version: 19.2.3(@types/react@19.2.14)
       autoprefixer:
         specifier: ^10.4.19
