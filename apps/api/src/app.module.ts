@@ -25,12 +25,11 @@ import { Todo } from './todos/entities/todo.entity';
         password: configService.get<string>('DATABASE_PASSWORD', 'postgres'),
         database: configService.get<string>('DATABASE_NAME', 'todo_db'),
         entities: [User, Todo],
-        synchronize: configService.get<string>('NODE_ENV') !== 'production',
+        synchronize: configService.get<string>('DATABASE_SYNCHRONIZE') === 'true',
         logging: configService.get<string>('DATABASE_LOGGING') === 'true',
-        ssl:
-          configService.get<string>('NODE_ENV') === 'production'
-            ? { rejectUnauthorized: false }
-            : false,
+        ssl: configService.get<string>('DATABASE_SSL') === 'true'
+          ? { rejectUnauthorized: false }
+          : false,
       }),
     }),
     ThrottlerModule.forRoot([

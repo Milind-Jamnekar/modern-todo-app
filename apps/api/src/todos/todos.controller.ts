@@ -60,7 +60,7 @@ export class TodosController {
   getStats(@CurrentUser() user: User) {
     return this.todosService.getStats(user.id);
   }
-
+  
   @Get(':id')
   @ApiOperation({ summary: 'Get a single todo' })
   findOne(
