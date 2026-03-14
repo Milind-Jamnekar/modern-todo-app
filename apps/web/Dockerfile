@@ -33,7 +33,7 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
 
-COPY --from=build /app/apps/web/public ./public
+RUN mkdir -p ./public
 COPY --from=build /app/apps/web/.next/standalone ./
 COPY --from=build /app/apps/web/.next/static ./.next/static
 
