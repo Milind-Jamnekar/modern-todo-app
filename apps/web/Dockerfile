@@ -33,10 +33,13 @@ ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
 
+# Copy node_modules (includes next), built output and config
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=build /app/apps/web/.next ./.next
+COPY --from=build /app/apps/web/next.config.js ./next.config.js
+COPY --from=build /app/apps/web/package.json ./package.json
 RUN mkdir -p ./public
-COPY --from=build /app/apps/web/.next/standalone ./
-COPY --from=build /app/apps/web/.next/static ./.next/static
 
 EXPOSE 3000
 ENV PORT=3000
-CMD ["node", "server.js"]
+CMD ["node_modules/.bin/next", "start"]
