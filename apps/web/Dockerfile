@@ -28,18 +28,24 @@ ENV NEXT_TELEMETRY_DISABLED=1
 RUN pnpm --filter @repo/web build
 
 # ── Production runner ─────────────────────────────────────────────────────────
-FROM node:20-alpine AS runner
+FROM base AS runner
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
 
-# Copy node_modules (includes next), built output and config
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=build /app/apps/web/.next ./.next
-COPY --from=build /app/apps/web/next.config.js ./next.config.js
-COPY --from=build /app/apps/web/package.json ./package.json
-RUN mkdir -p ./public
+# Re-run pnpm install in runner so pnpm sets up its store and symlinks correctly
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY packages/tsconfig/package.json ./packages/tsconfig/
+COPY packages/types/package.json ./packages/types/
+COPY apps/web/package.json ./apps/web/
+RUN pnpm install --frozen-lockfile --prod
+
+# Copy built output
+COPY --from=build /app/apps/web/.next ./apps/web/.next
+COPY --from=build /app/apps/web/next.config.js ./apps/web/next.config.js
+RUN mkdir -p ./apps/web/public
 
 EXPOSE 3000
 ENV PORT=3000
-CMD ["node_modules/.bin/next", "start"]
+WORKDIR /app/apps/web
+CMD ["pnpm", "exec", "next", "start", "--port", "3000"]
