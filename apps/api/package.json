@@ -38,7 +38,7 @@
   "devDependencies": {
     "@nestjs/cli": "^11.0.16",
     "@nestjs/schematics": "^11.0.9",
-    "@nestjs/testing": "^11.1.17",
+    "@nestjs/testing": "^11.1.18",
     "@repo/tsconfig": "workspace:*",
     "@types/bcryptjs": "^3.0.0",
     "@types/express": "^5.0.6",
@@ -58,7 +58,7 @@
     "jest": "^30.3.0",
     "prettier": "^3.3.3",
     "supertest": "^7.0.0",
-    "ts-jest": "^29.2.2",
+    "ts-jest": "^29.4.9",
     "typescript": "^5.4.5"
   },
   "jest": {
