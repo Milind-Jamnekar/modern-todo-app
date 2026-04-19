@@ -30,7 +30,7 @@ import { TodoPriority } from '@repo/types';
 const todoSchema = z.object({
   title: z.string().min(1, 'Title is required').max(200),
   description: z.string().max(1000).optional(),
-  priority: z.nativeEnum(TodoPriority).default(TodoPriority.MEDIUM),
+  priority: z.nativeEnum(TodoPriority),
   dueDate: z.string().optional(),
 });
 
