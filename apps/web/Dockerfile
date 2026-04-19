@@ -1,7 +1,7 @@
 FROM node:25-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
+RUN npm install -g corepack && corepack enable
 WORKDIR /app
 
 # ── Install all dependencies ──────────────────────────────────────────────────
