@@ -1,7 +1,7 @@
 FROM node:25-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN npm install -g corepack && corepack enable
+RUN npm install -g pnpm
 WORKDIR /app
 
 # ── Install all dependencies ──────────────────────────────────────────────────
@@ -26,7 +26,7 @@ RUN pnpm --filter @repo/api build
 FROM node:25-alpine AS runner
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN npm install -g corepack && corepack enable
+RUN npm install -g pnpm
 WORKDIR /app
 
 # Install only production dependencies
