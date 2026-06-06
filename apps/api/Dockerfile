@@ -6,6 +6,8 @@ WORKDIR /app
 
 # ── Install all dependencies ──────────────────────────────────────────────────
 FROM base AS deps
+# Build tools required to compile better-sqlite3 (native devDep used in e2e tests)
+RUN apk add --no-cache python3 make g++
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY packages/tsconfig/package.json ./packages/tsconfig/
 COPY packages/types/package.json ./packages/types/
@@ -34,7 +36,7 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY packages/tsconfig/package.json ./packages/tsconfig/
 COPY packages/types/package.json ./packages/types/
 COPY apps/api/package.json ./apps/api/
-RUN pnpm install --frozen-lockfile --prod
+RUN pnpm install --frozen-lockfile --prod --ignore-scripts
 
 COPY --from=build /app/apps/api/dist ./apps/api/dist
 
